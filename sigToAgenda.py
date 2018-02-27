@@ -3,6 +3,7 @@ import sys
 import getpass
 import urllib3
 from bs4 import BeautifulSoup
+from createCSV import CSV
 from urllib.parse import urljoin
 
 class Schedule:
@@ -16,9 +17,24 @@ class Schedule:
 		pageData = self.connectToSIG()
 		self.findFormAndLogin(pageData)
 		schedulePage = self.session.get(self.scheduleURL, verify=False)
-		print (schedulePage.text)
+		soup = BeautifulSoup(schedulePage.text, 'html.parser')
+		scheduleBoard = soup.find('tbody')
+		matrix = [[td.text for td in tr.findAll('td')] for tr in scheduleBoard.findAll('tr')]
+		for index, row in enumerate(matrix):
+			matrix[index][0] = self.correctTime(row[0])
+		for row in matrix:
+			print (row)			
 
 		#Como estamos em período de recesso, ainda não é possível testar o programa
+
+	def correctTime(self, time):
+		hour = int(time.split(':')[0])
+		if (hour > 12):
+			hour = hour - 12
+			return (str(hour)+':00 PM')
+		else :
+			return (str(hour)+':00 AM')
+
 
 
 	def findFormAndLogin(self,formData):
@@ -60,7 +76,11 @@ def getInfo():
 	info = {}
 	info['login'] = input("Enter your SIG login: ")
 	info['password'] = getpass.getpass(prompt='Enter your SIG password: ')
-	#info['agendaName'] = input("Enter a name for your agenda: ")
+	#info['startDate'] = input("Enter the start date (MM/DD/YYYY): ")
+	#info['endDate'] = input("Enter the end date (MM/DD/YYYY): ")
+	info['startDate'] = '01/03/2018'
+	info['endDate'] = '09/03/2018'
+	info['fileName'] = 'example.csv'
 	return info
 
 
@@ -69,6 +89,9 @@ if __name__ == "__main__":
 	info = getInfo()
 	schedule = Schedule(info)
 	schedule.getClassSchedule()
+	csvFile = CSV(schedule, info['startDate'], info['endDate'], info['fileName'])
+	csvFile.writeFile()
+
 
 
 	
