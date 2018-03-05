@@ -1,2 +1,3 @@
 *.csv
+*.config
 __pycache__/
