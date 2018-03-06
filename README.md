@@ -23,7 +23,7 @@ pip install urllib3
 
 Just run 
 
-``` python3 sigToAgenda.py ```
+``` python3 sigToCalendar.py ```
 
 You'll need to provide some information to run this script
 

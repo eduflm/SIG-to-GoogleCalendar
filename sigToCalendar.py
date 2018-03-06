@@ -103,7 +103,7 @@ def getInfo():
 	info['password'] = getpass.getpass(prompt='Enter your SIG password: ')
 	info['startDate'] = input("Enter the start date (DD/MM/YYYY): ")
 	info['endDate'] = input("Enter the end date (DD/MM/YYYY): ")
-	info['fileName'] = 'example.csv'
+	info['fileName'] = 'calendar.csv'
 	return info
 
 def getInfoFromFile(fileData):
