@@ -19,7 +19,7 @@ urllib3
 pip install urllib3
 ```
 
-### Rodando
+### Running
 
 Just run 
 

@@ -21,7 +21,7 @@ urllib3
 pip install urllib3
 ```
 
-### Running
+### Rodando
 
 Apenas rode no terminal
 
