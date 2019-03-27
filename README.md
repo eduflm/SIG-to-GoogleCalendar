@@ -6,19 +6,12 @@
 
 ### Pré-requisitos
 
-O que você precisa para rodar esse script
+Você precisa de Python 3.x.x para rodar esse script
+
+Para instalar as dependencias, digite no terminal
 
 ```
-Python 3.x.x
-
-Beautiful Soup 4
-pip3 install beautifulsoup4
-
-Numpy
-pip3 install numpy
-
-urllib3
-pip3 install urllib3
+$ pip install -r requeriments.txt
 ```
 
 ### Rodando

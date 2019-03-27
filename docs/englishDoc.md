@@ -4,19 +4,12 @@
 
 ### Prerequisites
 
-What you need to run this script
+You need Python 3.x.x to run this script
+
+To install dependencies, type in the terminal
 
 ```
-Python 3.x.x
-
-Beautiful Soup 4
-pip install beautifulsoup4
-
-Numpy
-pip install numpy
-
-urllib3
-pip install urllib3
+$ pip install -r requeriments.txt
 ```
 
 ### Running
